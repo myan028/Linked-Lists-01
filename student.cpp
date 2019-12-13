@@ -9,11 +9,13 @@ using namespace std;
 Student::Student(char* newFirstName, char* newLastName, int newId, float newGpa){
   firstName = newFirstName;
   lastName = newLastName;
+  //strcpy(firstName, newFirstName);
+  //strcpy(lastName, newLastName);
   id = newId;
   gpa = newGpa;
 }
 
-char* Student::getFirstName(){ //getters for student info
+char* Student::getFirstName(){
 	return firstName;
 }
 
@@ -29,7 +31,7 @@ float Student::getGpa(){
 	return gpa;
 }
 
-Student::~Student(){ //destructor
+Student::~Student(){
   delete[] firstName;
   delete[] lastName;
 }

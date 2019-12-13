@@ -11,7 +11,7 @@ using namespace std;
 
 class Node{ //initialize functions
  public:
-  Node(); //constructor
+  Node(Student* newStudent); //constructor
   void setStudent(Student*);
   Student* getStudent();
   void setNext(Node* newNext); // set next pointer to corresponding node pointer

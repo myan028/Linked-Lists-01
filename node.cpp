@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <cstring>
 #include <vector>
@@ -7,7 +8,7 @@
 
 using namespace std;
 
-Node::Node(){
+Node::Node(Student* newStudent){
   //value = 0;
   student = NULL;
   next = NULL;
@@ -21,7 +22,7 @@ int Node::getValue(){
   return value;
 }*/
 
-Student* Node::getStudent(){ //get
+Student* Node::getStudent(){
 	return student;
 }
 

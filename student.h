@@ -2,20 +2,20 @@
 #include <cstring>
 #include <vector>
 
-#ifndef STUDENT_H 
+#ifndef STUDENT_H
 #define STUDENT_H
 
 using namespace std;
 
 class Student{
- public: //initialize variables for all students
+ public:
   Student(char* newFirstName, char* newLastName, int newId, float newGpa);
-  char* getFirstName(); //getters
+  char* getFirstName();
   char* getLastName();
   int getId();
   float getGpa();
-  ~Student(); //destructor
- private: //initialize for individual students
+  ~Student();
+ private:
   char* firstName = new char[100];
   char* lastName = new char[100];
   int id;

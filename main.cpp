@@ -9,29 +9,16 @@
 
 using namespace std;
 
-/*
-Code by Michael Yan 12/12/19
-
-This code runs a simple student list using linkedlists/nodes. The user can add a student with name, student id,
-and gpa to the list. The user can also print the list which displays all students and their info in the 
-database.
-*/
-
-
 //void add(int newValue);
 //void print(Node* next);
 
 Node* head = NULL;
 
-
-//METHOD VS FUNCTION
-
-
-void add(char* firstName, char* lastName, int id, float gpa){ //add function, pass in parameters
+void add(char* firstName, char* lastName, int id, float gpa){
 	Student* newStudent = new Student(firstName, lastName, id, gpa);
 	Node* current = head;
 	if(current == NULL){
-		head = new Node();
+		head = new Node(newStudent); ////////
 		head->setStudent(newStudent);
 	}
 	
@@ -39,12 +26,12 @@ void add(char* firstName, char* lastName, int id, float gpa){ //add function, pa
 		while(current->getNext() != NULL){
 			current = current->getNext();
 		}
-		current->setNext(new Node());
+		current->setNext(new Node(newStudent)); //////
 		current->getNext()->setStudent(newStudent);
 	}
 }
 
-void print(Node* next){ //print function
+void print(Node* next){
 	if(next == head){
 		cout << "List:\n\n";
 	}
@@ -66,18 +53,16 @@ int main(){
 	//Node *head = NULL;
 	//Node *tail = NULL;
 	
-	while(true){ //while running true
-		char input[100]; //userinput
+	while(true){
+		char input[100];
 		char* firstName = new char[50];
 		char* lastName = new char [50];
 		int id = 0;
 		float gpa = 0;
-		cout << "Enter a command ('add', 'print', 'exit'): ";
+		cout << "Enter a command ('add', 'print', or 'exit'): ";
 		cin.getline(input, 100);
 		
 		if(strcmp(input, "add") == 0){ //if user wants to add a student
-			
-			//prompts
 			cout << "Enter the student's first name: ";
 			cin.getline(firstName, 50);
 			cout << "Enter the student's last name: ";
@@ -91,21 +76,19 @@ int main(){
 			cin >> gpa;
 			cin.clear(); cin.ignore(10000, '\n');
 			
-			add(firstName, lastName, id, gpa); //call add method and implement user inputs
-			//print(head);
-			
+			add(firstName, lastName, id, gpa);
 		}
 		
-		else if(strcmp(input, "print") == 0){
-			print(head); //call print method, prints node head
+		else if(strcmp(input, "print") == 0){ //if user wants to print list
+			print(head);
 		}
 		
 		else if(strcmp(input, "exit") == 0){ //if user wants to exit
-			return false; //kill program
+			return false;
 		}
 		
 		else{ //if user enters an unsupported input
-			cout << "That action is not recognized." << endl; //cycles back
+			cout << "That action is not recognized." << endl;
 		}
 		
 		
